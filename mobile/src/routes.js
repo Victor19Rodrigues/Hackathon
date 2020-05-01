@@ -1,4 +1,5 @@
 import React from 'react';
+import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -9,9 +10,12 @@ import QRCode from './pages/QRCode';
 import Favourite from './pages/Favourite';
 import Wallet from './pages/Wallet';
 import Ticket from './pages/Ticket';
+import Product from './pages/Product';
 
-import HeaderRight from './pages/HeaderIcons/HeaderRight';
-import HeaderLeft from './pages/HeaderIcons/HeaderLeft';
+import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
+
+import HeaderRight from './components/Icons/HeaderIcons/HeaderRight';
+import HeaderLeft from './components/Icons/HeaderIcons/HeaderLeft';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -75,6 +79,18 @@ function MainStackNavigator() {
           }}
         />
         <Stack.Screen name="QRCode" component={QRCode} options={{ title: 'Escanear Produto' }} />
+        <Stack.Screen
+          name="Product"
+          component={Product}
+          options={{
+            headerTitle: '',
+            headerRight: () => (
+              <>
+                <HeartShareShoppingCart />
+              </>
+            ),
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
