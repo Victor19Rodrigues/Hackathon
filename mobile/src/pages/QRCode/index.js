@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { Text } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-// import { Container } from './styles';
+import { Container } from './styles';
 
 export default function QRCode() {
   return (
-    <View>
+    <Container>
       <Text>QRCode</Text>
-    </View>
+      <Feather name="home" size={28} color="#e02041" />
+    </Container>
   );
 }

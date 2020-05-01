@@ -1,8 +1,21 @@
 import styled from 'styled-components/native';
-import Constants from 'expo-constants';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
+  background: #fff;
   flex: 1;
-  padding: 0 24px;
-  padding-top: ${Constants.statusBarHeight + 20}px;
+`;
+
+export const Header = styled.View`
+  height: 50px;
+  padding: 0 16px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const HeaderIconsRight = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 120px;
 `;
