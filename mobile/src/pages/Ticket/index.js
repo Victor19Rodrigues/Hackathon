@@ -3,10 +3,10 @@ import { Text } from 'react-native';
 
 import { Container } from './styles';
 
-export default function User() {
+export default function Ticket() {
   return (
     <Container>
-      <Text>User</Text>
+      <Text>Ticket</Text>
     </Container>
   );
 }

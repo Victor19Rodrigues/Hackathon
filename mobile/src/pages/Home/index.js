@@ -12,7 +12,7 @@ export default function Home() {
         <HeaderIconsRight>
           <Octicons name="search" size={24} color="#E60014" />
           <Feather name="shopping-bag" padding={30} size={24} color="#E60014" />
-          <MaterialCommunityIcons name="bell-outline" size={24} color="#E60014" />
+          <Feather name="user" size={24} color="#E60014" />
         </HeaderIconsRight>
       </Header>
     </Container>
