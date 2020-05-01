@@ -1,12 +1,22 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { MaterialCommunityIcons, Octicons, Feather } from '@expo/vector-icons';
+import { Container, Header, HeaderIconsRight } from './styles';
 
-import { Container } from './styles';
+import Carousel from '../../components/Carousel';
+import Sugestions from '../../components/Sugestions';
+import Products from '../../components/Products';
 
 export default function Home() {
   return (
+    <>
     <Container>
-      <Text>Home</Text>
+      
+      <Sugestions/>
+
+      <Carousel/>
+      <Products/>
+      
     </Container>
+    </>
   );
 }
