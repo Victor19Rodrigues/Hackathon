@@ -4,7 +4,7 @@ import { Rating, AirbnbRating } from 'react-native-ratings';
 
 import { Container, Content, Img, Title } from './styles';
 
-import imgCard from '../../../assets/bg-card.png';
+import imgCard from '../../assets/img/product/apple-watch.png';
 
 export default function Product() {
   return (

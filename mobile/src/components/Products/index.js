@@ -1,39 +1,37 @@
 import React from 'react';
-import { View, FlatList,Text } from 'react-native';
-import { color } from 'react-native-reanimated';
+import {AntDesign} from '@expo/vector-icons';
 
-//import { Container } from './styles';
+import { Description, ProductList,ProductImage, ProductItem, Stars ,Value } from './styles';
+
+import {products} from '../../assets/Constants/index';
 
 export default function List() {
-  const incidents = [
-    item = {
-        id: 1, 
-        description: 1,},
-    item = {
-        id: 2, 
-        description: 1,},
-    item = {
-        id: 3, 
-        description: 1,},
-    item = {
-        id: 4, 
-        description: 1,},
-    item = {
-        id: 5, 
-        description: 1,},
-        item = {
-            id: 6, 
-            description: 1,},
-]
+ 
   return (
-    <FlatList
+    <ProductList
     Vertical
-    data={incidents}
+    data={products}
     numColumns={2}
-    keyExtractor={incident => String(incident.id)}
+    keyExtractor={product => String(product.id)}
     showsVerticalScrollIndicator={false}
-    renderItem={({item:incident}) => (
-    <Text style={{color: "#000",backgroundColor:"lightgray", flex: 1, padding:100, justifyContent: "space-between"}} >{incident.description}</Text>
+    renderItem={({item:product}) => (
+      <ProductItem>
+
+        <ProductImage source={product.img}></ProductImage>
+        <Description>{ String(product.description).substr(0,25) +" .." }</Description>
+        <Stars>
+         {product.stars.map( (star) => (
+            <AntDesign key={Math.random()} name="star" color={ star ? "#E60014" : "#CCC"} size={15}/>
+          ))}
+        </Stars>
+        <Value>{Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(product.value)}
+        </Value>
+        
+      </ProductItem>
+
     )}
     />
 

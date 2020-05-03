@@ -1,10 +1,10 @@
 import React from 'react';
 import { MaterialCommunityIcons, Octicons, Feather } from '@expo/vector-icons';
-import { Container, Header, HeaderIconsRight } from './styles';
+import { Container } from './styles';
 
-import Carousel from '../../components/Carousel';
 import Sugestions from '../../components/Sugestions';
 import Products from '../../components/Products';
+import Tips from '../../components/Tips';
 
 export default function Home() {
   return (
@@ -12,10 +12,8 @@ export default function Home() {
     <Container>
       
       <Sugestions/>
-
-      <Carousel/>
-      <Products/>
-      
+      <Tips />
+      <Products />
     </Container>
     </>
   );
