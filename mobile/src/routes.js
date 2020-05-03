@@ -35,16 +35,34 @@ function MainTabNavigator() {
               return <Feather name={iconName} size={size} color={color} />;
             case 'QRCode':
               iconName = 'qrcode';
-              return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+              return (
+                <MaterialCommunityIcons
+                  name={iconName}
+                  size={size}
+                  color={color}
+                />
+              );
             case 'Favourite':
               iconName = 'heart';
               return <Feather name={iconName} size={size} color={color} />;
             case 'Wallet':
               iconName = 'wallet-outline';
-              return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+              return (
+                <MaterialCommunityIcons
+                  name={iconName}
+                  size={size}
+                  color={color}
+                />
+              );
             case 'Ticket':
               iconName = 'ticket-outline';
-              return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
+              return (
+                <MaterialCommunityIcons
+                  name={iconName}
+                  size={size}
+                  color={color}
+                />
+              );
             default:
               break;
           }
@@ -58,7 +76,8 @@ function MainTabNavigator() {
           backgroundColor: '#FAFAFA',
           borderTopColor: 'rgba(255,255,255,0.2)',
         },
-      }}>
+      }}
+    >
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favourite" component={Favourite} />
       <Tab.Screen name="Wallet" component={Wallet} />
@@ -80,7 +99,14 @@ function MainStackNavigator() {
             headerRight: () => <HeaderRight />,
           }}
         />
-        <Stack.Screen name="QRCode" component={QRCode} options={{ title: 'Escanear Produto' }} />
+        <Stack.Screen
+          name="QRCode"
+          component={QRCode}
+          options={{
+            title: 'Escanear Produto',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
         <Stack.Screen
           name="Product"
           component={Product}
@@ -91,9 +117,10 @@ function MainStackNavigator() {
                 <HeartShareShoppingCart />
               </>
             ),
+            headerLeft: () => <HeaderBack />,
           }}
         />
-      <Stack.Screen
+        <Stack.Screen
           name="Perfil"
           component={Perfil}
           options={{
