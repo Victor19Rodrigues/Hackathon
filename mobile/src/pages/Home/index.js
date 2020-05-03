@@ -1,12 +1,20 @@
 import React from 'react';
-import { Text } from 'react-native';
-
+import { MaterialCommunityIcons, Octicons, Feather } from '@expo/vector-icons';
 import { Container } from './styles';
+
+import Sugestions from '../../components/Sugestions';
+import Products from '../../components/Products';
+import Tips from '../../components/Tips';
 
 export default function Home() {
   return (
+    <>
     <Container>
-      <Text>Home</Text>
+      
+      <Sugestions/>
+      <Tips />
+      <Products />
     </Container>
+    </>
   );
 }

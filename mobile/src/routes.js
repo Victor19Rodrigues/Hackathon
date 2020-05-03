@@ -11,11 +11,13 @@ import Favourite from './pages/Favourite';
 import Wallet from './pages/Wallet';
 import Ticket from './pages/Ticket';
 import Product from './pages/Product';
+import Perfil from './pages/Perfil';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
 import HeaderRight from './components/Icons/HeaderIcons/HeaderRight';
 import HeaderLeft from './components/Icons/HeaderIcons/HeaderLeft';
+import HeaderBack from './components/Icons/HeaderIcons/HeaderBack';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -89,6 +91,14 @@ function MainStackNavigator() {
                 <HeartShareShoppingCart />
               </>
             ),
+          }}
+        />
+      <Stack.Screen
+          name="Perfil"
+          component={Perfil}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack />,
           }}
         />
       </Stack.Navigator>
