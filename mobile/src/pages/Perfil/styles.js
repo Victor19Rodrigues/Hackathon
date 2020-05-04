@@ -33,7 +33,7 @@ export const PaymentMethodsTitle = styled.Text`
 export const PaymentList = styled.FlatList`
 padding:10px;`; 
 
-export const PaymentItem = styled.View`
+export const PaymentItem = styled.TouchableOpacity`
 border-bottom-color: #BDBDBD;
 border-bottom-width: 1px;
 flex-direction: row;

@@ -15,6 +15,7 @@ import HomeOrStore from './pages/HomeOrStore';
 import GetInStore from './pages/GetInStore';
 import GetProduct from './pages/GetProduct';
 import MyRequests from './pages/MyRequests';
+import Assessments from './pages/Assessments';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -84,7 +85,12 @@ function MainTabNavigator() {
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Favourite" component={Favourite} />
       <Tab.Screen name="Wallet" component={Wallet} />
-      <Tab.Screen name="Ticket" component={Ticket} />
+      <Tab.Screen 
+        name="Ticket" 
+        component={Ticket} 
+        headerShown={false}
+      
+      />
     </Tab.Navigator>
   );
 }
@@ -163,6 +169,15 @@ function MainStackNavigator() {
             headerLeft: () => <HeaderBack />,
           }}
         />
+        />      
+      <Stack.Screen
+        name="Assessments"
+        component={Assessments}
+        options={{
+          headerTitle: '',
+          headerLeft: () => <HeaderBack />,
+        }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );
