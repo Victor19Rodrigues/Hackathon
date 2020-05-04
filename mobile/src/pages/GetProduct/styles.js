@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
-import { Image, TouchableOpacity } from 'react-native';
 
 export const PaymentMethods = styled.View`
+  margin-top: 24px;
   padding: 0 16px;
   width: 100%;
   flex-direction: row;
@@ -33,30 +33,4 @@ export const PaymentMethodsInfo = styled.View`
   justify-content: flex-end;
   align-self: center;
   flex: 1;
-`;
-
-export const DivisorLine = styled.View`
-  background-color: #a2a2a2;
-  height: 1px;
-  margin-bottom: 16px;
-  width: 320px;
-  margin-left: 16px;
-`;
-
-export const BuyButton = styled(TouchableOpacity)`
-  background-color: #e60014;
-  width: 100%;
-  height: 56px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 4px;
-`;
-
-export const AskOpinionButton = styled(TouchableOpacity)`
-  background-color: #fff;
-  width: 343px;
-  height: 56px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
 `;
