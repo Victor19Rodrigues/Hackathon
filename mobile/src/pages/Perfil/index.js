@@ -46,7 +46,14 @@ export default function Perfil() {
             data={perfilOption}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
-            <PaymentItem key={item.id} onPress={()=> item.title == "Opiniões e Avaliações" ? navigation.navigate('Assessments')  : navigation.goBack()} >
+            <PaymentItem key={item.id} onPress={()=> {
+              if(item.title == "Opiniões e Avaliações") 
+                return navigation.navigate('Assessments') 
+              if (item.title == "Meus pedidos")
+                return navigation.navigate('MyRequests')  
+               return navigation.goBack()
+               
+               }}>
                 <item.lib name={item.icon} solid={true} size={20} /> 
                 <PaymentHeader>
                 <PaymentTitle>{item.title}</PaymentTitle>

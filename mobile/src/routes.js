@@ -169,7 +169,6 @@ function MainStackNavigator() {
             headerLeft: () => <HeaderBack />,
           }}
         />
-        />      
       <Stack.Screen
         name="Assessments"
         component={Assessments}
