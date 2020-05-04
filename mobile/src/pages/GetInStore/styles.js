@@ -1,7 +1,6 @@
 import styled from 'styled-components/native';
 
 export const PaymentMethods = styled.View`
-  margin-top: 24px;
   padding: 0 16px;
   width: 100%;
   flex-direction: row;
