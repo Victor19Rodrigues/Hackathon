@@ -1,89 +1,75 @@
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import {
-  PaymentMethods,
-  PaymentMethodsIcon,
-  PaymentMethodsDescription,
-  PaymentMethodsDescriptionTitle,
-  PaymentMethodsDescriptionType,
-  PaymentMethodsInfo,
-} from './styles';
+import { DivisorLine } from './styles';
+
+import imgBarCode from '../../assets/barCode.png';
+import imgQRCode from '../../assets/qrCode.png';
 
 export default function GetProduct() {
-  const navigation = useNavigation();
-
   return (
-    <View style={{ backgroundColor: '#fff', flex: 1, alignItems: 'center' }}>
-      <Text
-        style={{
-          marginTop: 24,
-          width: 300,
-          textAlign: 'center',
-          marginBottom: 32,
-          fontSize: 20,
-          lineHeight: 23,
-        }}>
-        Selecione uma das opções para retirar o seu pedido.
-      </Text>
-
-      <TouchableOpacity
-        onPress={() => navigation.navigate('GetInStore')}
+    <View
+      style={{
+        backgroundColor: '#fff',
+        flex: 1,
+        alignItems: 'center',
+      }}>
+      <View
         style={{
           alignItems: 'center',
           justifyContent: 'center',
+          marginTop: 16,
+          marginLeft: 16,
+          marginRight: 16,
+          marginBottom: 101,
           borderRadius: 4,
           borderWidth: 1,
           borderColor: '#CCC',
-          textAlign: 'center',
-          marginLeft: 16,
-          marginRight: 16,
         }}>
-        <PaymentMethods>
-          <PaymentMethodsIcon>
-            <MaterialCommunityIcons name="store" color="#333333" size={24} />
-          </PaymentMethodsIcon>
-          <PaymentMethodsDescription>
-            <PaymentMethodsDescriptionTitle>Pegar na Loja</PaymentMethodsDescriptionTitle>
-            <PaymentMethodsDescriptionType>
-              Com o pagamento aprovado, pegue o produto na hora ou no mesmo dia.
-            </PaymentMethodsDescriptionType>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Ionicons name="ios-arrow-forward" size={20} color="#EB5757" />
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-      </TouchableOpacity>
+        <View
+          style={{
+            borderRadius: 4,
+            marginLeft: '4.27%',
+            marginRight: '4.27%',
+            marginTop: '14.39%',
+            marginBottom: '15.14%',
+          }}>
+          <Image source={imgBarCode} />
+        </View>
 
-      <TouchableOpacity
-        style={{
-          marginTop: 8,
-          alignItems: 'center',
-          justifyContent: 'center',
-          borderRadius: 4,
-          borderWidth: 1,
-          borderColor: '#CCC',
-          textAlign: 'center',
-          marginLeft: 16,
-          marginRight: 16,
-        }}>
-        <PaymentMethods>
-          <PaymentMethodsIcon>
-            <Feather name="truck" color="#333333" size={24} />
-          </PaymentMethodsIcon>
-          <PaymentMethodsDescription>
-            <PaymentMethodsDescriptionTitle>Receber em casa</PaymentMethodsDescriptionTitle>
-            <PaymentMethodsDescriptionType>
-              Aproveite toda a comodidade e agilidade na entrega do seu produto.
-            </PaymentMethodsDescriptionType>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Ionicons name="ios-arrow-forward" size={20} color="#EB5757" />
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-      </TouchableOpacity>
+        <View
+          style={{
+            marginTop: 34,
+          }}>
+          <Image source={imgQRCode} />
+        </View>
+        <Text
+          style={{
+            marginTop: 16,
+            marginBottom: 40,
+            color: '#4F4F4F',
+            fontSize: 16,
+            fontWeight: 'bold',
+            textAlign: 'center',
+          }}>
+          Apple Watch Series 5 Gps, 44mm Space Grey Aluminium Case With Black Sport
+        </Text>
+
+        <DivisorLine />
+
+        <Text
+          style={{
+            marginTop: 16,
+            marginBottom: 73,
+            color: '#4F4F4F',
+            fontSize: 12,
+            textAlign: 'center',
+          }}>
+          Apresente esse código ao atendente para retirar seu produto.
+        </Text>
+      </View>
     </View>
   );
 }
