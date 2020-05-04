@@ -1,5 +1,4 @@
 import React from 'react';
-import { View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,6 +11,8 @@ import Wallet from './pages/Wallet';
 import Ticket from './pages/Ticket';
 import Product from './pages/Product';
 import Perfil from './pages/Perfil';
+import HomeOrStore from './pages/HomeOrStore';
+import GetInStore from './pages/GetInStore';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -125,6 +126,22 @@ function MainStackNavigator() {
           component={Perfil}
           options={{
             headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="HomeOrStore"
+          component={HomeOrStore}
+          options={{
+            title: 'Em casa ou na Loja',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="GetInStore"
+          component={GetInStore}
+          options={{
+            title: 'Pegar na Loja',
             headerLeft: () => <HeaderBack />,
           }}
         />

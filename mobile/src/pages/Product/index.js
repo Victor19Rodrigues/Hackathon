@@ -1,7 +1,8 @@
 import React from 'react';
-import { ScrollView, Text, TouchableOpacity, View } from 'react-native';
+import { ScrollView, Text, TouchableOpacity, View, YellowBox } from 'react-native';
 import { AntDesign, Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import NumericInput from 'react-native-numeric-input';
+import { useNavigation } from '@react-navigation/native';
 
 import {
   Container,
@@ -36,9 +37,14 @@ import {
 
 import imgCard from '../../assets/img/product/apple-watch.png';
 
+console.ignoredYellowBox = ['Warning: Each', 'Warning: componentWillReceiveProps has been'];
+YellowBox.ignoreWarnings = ['Warning: componentWillReceiveProps has been'];
+
 export default function Product() {
+  const navigation = useNavigation();
+
   return (
-    <View style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff' }}>
       <ScrollView style={{ flex: 1 }}>
         <Container>
           <ScrollView horizontal>
@@ -325,7 +331,7 @@ export default function Product() {
             <AntDesign name="like2" size={24} color="#219653" />
           </IconsLike>
 
-          <DivisorLineInfo style={{ marginBottom: 20 }} />
+          <DivisorLineInfo style={{ marginBottom: 150 }} />
         </Content>
       </ScrollView>
 
@@ -333,6 +339,7 @@ export default function Product() {
         <ButtonSale style={{ paddingTop: 5 }}>
           <NumericInput
             rounded
+            onChange={() => {}}
             type="plus-minus"
             totalWidth={164}
             totalHeight={55}
@@ -352,7 +359,7 @@ export default function Product() {
             }}
           />
 
-          <BuyButton>
+          <BuyButton onPress={() => navigation.navigate('HomeOrStore')}>
             <Text style={{ color: '#fff', fontSize: 16, lineHeight: 19 }}>Comprar</Text>
           </BuyButton>
         </ButtonSale>
