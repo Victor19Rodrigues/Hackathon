@@ -14,6 +14,7 @@ import Perfil from './pages/Perfil';
 import HomeOrStore from './pages/HomeOrStore';
 import GetInStore from './pages/GetInStore';
 import GetProduct from './pages/GetProduct';
+import MyRequests from './pages/MyRequests';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -146,11 +147,19 @@ function MainStackNavigator() {
             headerLeft: () => <HeaderBack />,
           }}
         />
-         <Stack.Screen
+        <Stack.Screen
           name="GetProduct"
           component={GetProduct}
           options={{
             title: 'Retirar Produto',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="MyRequests"
+          component={MyRequests}
+          options={{
+            title: 'Meus Pedidos',
             headerLeft: () => <HeaderBack />,
           }}
         />
