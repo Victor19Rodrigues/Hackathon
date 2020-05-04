@@ -1,11 +1,10 @@
 import { FontAwesome5, MaterialIcons, MaterialCommunityIcons, Ionicons, Entypo, AntDesign } from '@expo/vector-icons';
-
+import { useNavigation, useRoute } from '@react-navigation/native';
 import imgProductAppleWatch from '../img/product/apple-watch.png';
 import imgProductAspirador from '../img/product/aspirador-po.png';
 import imgProductLavadora from '../img/product/lavadora.png';
 import imgProductNotebook from '../img/product/notebook.png';
 import imgProductSmartphone from '../img/product/smartphone.png';
-
 
 export const products = [
     item = {
@@ -181,12 +180,32 @@ export const extratoAmeDigital = [
   item = 
   {
     id: Math.random(),
+    lib: Ionicons,
+    icon: "md-appstore",
+    title: "Compra | Apple Watch 3         ",
+    data: "03/03/2020",
+    value: -380.00,
+    color: '#EB5757',
+  },
+  item = 
+  {
+    id: Math.random(),
     lib: MaterialIcons,
     icon: "local-grocery-store",
     title: "Lojas Americanas | Curitiba         ",
     data: "15/03/2020",
     value: -175.00,
     color: '#EB5757',
+  },
+  item = 
+  {
+    id: Math.random(),
+    lib: AntDesign,
+    icon: "creditcard",
+    title: "Cashback | Apple Watch 3                ",
+    data: "15/03/2020",
+    value: +80.00,
+    color: '#170085',
   },
   item = 
   {
@@ -201,16 +220,6 @@ export const extratoAmeDigital = [
   item = 
   {
     id: Math.random(),
-    lib: AntDesign,
-    icon: "creditcard",
-    title: "Cashback | Apple Watch 3                ",
-    data: "15/03/2020",
-    value: +80.00,
-    color: '#EB5757',
-  },
-  item = 
-  {
-    id: Math.random(),
     lib: MaterialCommunityIcons,
     icon: "cash-usd",
     title: "Avaliação | Apple Watch 3                ",
@@ -218,7 +227,18 @@ export const extratoAmeDigital = [
     value: +15.00,
     color: '#170085',
   },
+  item = 
+  {
+    id: Math.random(),
+    lib: MaterialCommunityIcons,
+    icon: "cash-usd",
+    title: "Avaliação | Shure SHR440              ",
+    data: "23/03/2020",
+    value: +17.00,
+    color: '#170085',
+  },
 ];
+
 
 export const perfilOption = [
   item = {
@@ -239,8 +259,8 @@ export const perfilOption = [
     id: Math.random(),
     lib: FontAwesome5,
     icon: "money-bill",
-    title: "Funcionalidade de opiniões",
-    description: "Conversas",
+    title: "Opiniões e Avaliações",
+    description: "Conversas e Interações",
   },
   item = {
     id: Math.random(),
@@ -264,3 +284,96 @@ export const perfilOption = [
     description: "Preferências do app",
   },
 ];
+
+export const assessments = [
+  item = {
+    id: Math.random(), 
+    cpf: "10045632995",
+    description: "Apple Watch Series 3 GPS",
+    client: "Letícia Motta",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductAppleWatch,
+    tipo: "op_recebidas",
+    message: "Olá"},
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Samsung Galaxy A10",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 0,
+    img: imgProductSmartphone,
+    tipo: "op_recebidas",
+    message: "Olá" },
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Samsung Galaxy A10",
+    client: "Fabiano Mello",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductSmartphone,
+    tipo: "op_recebidas",
+    message: "Olá" },  
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Notebook Samsung Essentials E20",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductNotebook,
+    tipo: "op_recebidas",
+    message: "Olá" },
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Aspirador Pó Philco Ph1100",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 0,
+    img: imgProductAspirador,
+    tipo: "op_recebidas",
+    message: "Olá" },
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Lavadora de Roupas Brastemp 12Kg",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductLavadora,
+    tipo: "op_recebidas",
+    message: "Olá" },
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Samsung Galaxy A10",
+    client: "Fabiano Mello",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductSmartphone,
+    tipo: "op_efetuadas",
+    message: "Olá" },  
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Aspirador Pó Philco Ph1100",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 0,
+    img: imgProductAspirador,
+    tipo: "op_efetuadas",
+    message: "Olá" },
+  item = {
+    id: Math.random(), 
+    cpf: "09480379970",
+    description: "Lavadora de Roupas Brastemp 12Kg",
+    client: "Everton Ferreira",
+    data: "03/05/20",
+    ativo: 1,
+    img: imgProductLavadora,
+    tipo: "op_efetuadas",
+    message: "Olá" },
+  ];

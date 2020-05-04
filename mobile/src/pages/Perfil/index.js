@@ -3,6 +3,7 @@ import { Ionicons, AntDesign } from '@expo/vector-icons';
 
 import { perfilOption } from '../../assets/Constants'
 import perfilImage from '../../assets/img/perfil.png';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import {
      Container,
@@ -22,6 +23,7 @@ import {
  } from './styles';
 
 export default function Perfil() {
+  const navigation = useNavigation();
   return (
     <>
     <Container>
@@ -44,7 +46,7 @@ export default function Perfil() {
             data={perfilOption}
             keyExtractor={item => String(item.id)}
             renderItem={({item}) => (
-            <PaymentItem key={item.id}>
+            <PaymentItem key={item.id} onPress={()=> item.title == "Opiniões e Avaliações" ? navigation.navigate('Assessments')  : navigation.goBack()} >
                 <item.lib name={item.icon} solid={true} size={20} /> 
                 <PaymentHeader>
                 <PaymentTitle>{item.title}</PaymentTitle>

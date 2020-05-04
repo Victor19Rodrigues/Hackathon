@@ -33,8 +33,11 @@ import {
 } from './styles';
 
 export default function Wallet() {
+
   const [isVisible, setIsVisible] = useState(true);
   const [useBalance, setUseBalance] = useState(true);
+  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
 
   function handleToggleVisibility() {
     setIsVisible((prevState) => !prevState);
@@ -79,7 +82,9 @@ export default function Wallet() {
         <Switch
           value={useBalance} 
           trackColor={{true: '#160085', false: '#D3D3D3'}}
+          thumbColor={useBalance ? "#FAFAFA" : "#CCC"}
           onValueChange={handleToggleUseBalance}
+
         />
       </UseBalance>
 

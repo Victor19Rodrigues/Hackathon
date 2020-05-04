@@ -11,7 +11,7 @@ export default function HeaderIcons() {
   return (
     <Container>
       <Header>
-        <TouchableOpacity onPress={() => navigation.navigate('QRCode')}>
+        <TouchableOpacity onPress={() => navigation.goBack()}>
           <Feather name="arrow-left" size={30} color="#E60014" />
         </TouchableOpacity>
       </Header>

@@ -12,6 +12,7 @@ import Wallet from './pages/Wallet';
 import Ticket from './pages/Ticket';
 import Product from './pages/Product';
 import Perfil from './pages/Perfil';
+import Assessments from './pages/Assessments';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -59,10 +60,15 @@ function MainTabNavigator() {
           borderTopColor: 'rgba(255,255,255,0.2)',
         },
       }}>
-      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Home" component={Home}  />
       <Tab.Screen name="Favourite" component={Favourite} />
       <Tab.Screen name="Wallet" component={Wallet} />
-      <Tab.Screen name="Ticket" component={Ticket} />
+      <Tab.Screen 
+        name="Ticket" 
+        component={Ticket} 
+        headerShown={false}
+      
+      />
     </Tab.Navigator>
   );
 }
@@ -100,7 +106,15 @@ function MainStackNavigator() {
             headerTitle: '',
             headerLeft: () => <HeaderBack />,
           }}
-        />
+        />      
+      <Stack.Screen
+        name="Assessments"
+        component={Assessments}
+        options={{
+          headerTitle: '',
+          headerLeft: () => <HeaderBack />,
+        }}
+      />
       </Stack.Navigator>
     </NavigationContainer>
   );
