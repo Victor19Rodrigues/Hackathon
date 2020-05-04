@@ -16,6 +16,7 @@ import GetInStore from './pages/GetInStore';
 import GetProduct from './pages/GetProduct';
 import MyRequests from './pages/MyRequests';
 import Assessments from './pages/Assessments';
+import AssessmentSuccess from './pages/AssessmentSuccess';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -169,14 +170,22 @@ function MainStackNavigator() {
             headerLeft: () => <HeaderBack />,
           }}
         />
-      <Stack.Screen
-        name="Assessments"
-        component={Assessments}
-        options={{
-          headerTitle: '',
-          headerLeft: () => <HeaderBack />,
-        }}
-      />
+        <Stack.Screen
+          name="Assessments"
+          component={Assessments}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="AssessmentSuccess"
+          component={AssessmentSuccess}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
