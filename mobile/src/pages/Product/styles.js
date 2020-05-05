@@ -67,7 +67,6 @@ export const Price = styled.Text`
 export const CashBack = styled.View`
   margin-right: 16px;
   padding: 10px;
-  height: 21px;
   align-self: center;
   align-items: center;
   justify-content: center;
@@ -178,7 +177,6 @@ export const BuyButton = styled(TouchableOpacity)`
   height: 56px;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
   margin-left: 10px;
 `;
 
@@ -190,3 +188,6 @@ export const AskOpinionButton = styled(TouchableOpacity)`
   justify-content: center;
   border-radius: 2px;
 `;
+
+export const Stars = styled.Text`
+padding: 5px 10px;`;

@@ -14,8 +14,10 @@ import Perfil from './pages/Perfil';
 import HomeOrStore from './pages/HomeOrStore';
 import GetInStore from './pages/GetInStore';
 import GetProduct from './pages/GetProduct';
+import MyRequestItem from './pages/MyRequestItem';
 import MyRequests from './pages/MyRequests';
 import Assessments from './pages/Assessments';
+import Search from './pages/Search';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -138,6 +140,14 @@ function MainStackNavigator() {
           }}
         />
         <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
           name="HomeOrStore"
           component={HomeOrStore}
           options={{
@@ -162,6 +172,14 @@ function MainStackNavigator() {
           }}
         />
         <Stack.Screen
+          name="MyRequestItem"
+          component={MyRequestItem}
+          options={{
+            title: 'Meu Pedido',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
           name="MyRequests"
           component={MyRequests}
           options={{
@@ -177,6 +195,8 @@ function MainStackNavigator() {
           headerLeft: () => <HeaderBack />,
         }}
       />
+    
+
       </Stack.Navigator>
     </NavigationContainer>
   );

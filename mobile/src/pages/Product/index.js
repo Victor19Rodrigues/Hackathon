@@ -2,7 +2,8 @@ import React from 'react';
 import { ScrollView, Text, TouchableOpacity, View, YellowBox } from 'react-native';
 import { AntDesign, Feather, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
 import NumericInput from 'react-native-numeric-input';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { products } from '../../assets/Constants';
 
 import {
   Container,
@@ -33,46 +34,56 @@ import {
   ButtonSale,
   BuyButton,
   AskOpinionButton,
+  Stars
 } from './styles';
-
-import imgCard from '../../assets/img/product/apple-watch.png';
-
-console.ignoredYellowBox = ['Warning: Each', 'Warning: componentWillReceiveProps has been'];
-YellowBox.ignoreWarnings = ['Warning: componentWillReceiveProps has been'];
 
 export default function Product() {
   const navigation = useNavigation();
-
+  const route = useRoute();
+  const product = products.find(i => i.id == route.params.product.id)
   return (
-    <View style={{ flex: 1, backgroundColor: '#fff' }}>
-      <ScrollView style={{ flex: 1 }}>
+    <View style={{ flex: 1, backgroundColor: '#fff',}}>
+      <ScrollView style={{ flex: 1 }}
+      showsHorizontalScrollIndicator={false}
+      showsVerticalScrollIndicator={false}>
         <Container>
-          <ScrollView horizontal>
-            <Img source={imgCard} />
-            <Img source={imgCard} />
-            <Img source={imgCard} />
+          <ScrollView horizontal
+          showsHorizontalScrollIndicator={false}
+          showsVerticalScrollIndicator={false}>
+            <Img source={product.img}
+            style={{ height:160 }}  />
           </ScrollView>
         </Container>
         <Content>
-          <Title>Apple Watch Series 5 Gps, 44mm Space Grey Aluminium Case With Black Sport</Title>
+        <Title>{product.description}</Title>
 
           <Rating>
-            <AntDesign key={Math.random()} name="star" color={'#F2C94C'} size={15} />
-            <AntDesign key={Math.random()} name="star" color={'#F2C94C'} size={15} />
-            <AntDesign key={Math.random()} name="star" color={'#F2C94C'} size={15} />
-            <AntDesign key={Math.random()} name="star" color={'#F2C94C'} size={15} />
-            <AntDesign key={Math.random()} name="star" color={'#CCC'} size={15} />
-            <Text style={{ marginLeft: 10 }}>(1200)</Text>
-            <Text style={{ marginLeft: 100, marginRight: 16 }}>Cód. 123456789</Text>
+            <Stars>
+          {product.stars.map( (star) => (
+              <AntDesign key={Math.random()} name="star" color={ star ? "#E60014" : "#CCC"} size={15}/>
+            ))}
+          </Stars>
+            <Text style={{ marginLeft: 10 }}>({ Math.round(Math.random()*157,0) + 130 })</Text>
+          <Text style={{ marginLeft: 100, marginRight: 16 }}>Cód. { 1359 + Math.round(Math.random(),0)}</Text>
           </Rating>
 
           <PriceInfo>
             <Value>
-              <Discount>R$ 1.800,99</Discount>
-              <Price>R$ 1.800,99</Price>
+              <Discount>{Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(product.oldValue)}</Discount>
+              <Price>{Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(product.value)}</Price>
             </Value>
             <CashBack>
-              <CashBackText>15,50 de cashback</CashBackText>
+              <CashBackText>
+              {Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(product.value * 0.03)} de cashback</CashBackText>
             </CashBack>
           </PriceInfo>
 
@@ -82,7 +93,11 @@ export default function Product() {
             </PaymentMethodsIcon>
             <PaymentMethodsDescription>
               <PaymentMethodsDescriptionTitle>Cartão Americanas</PaymentMethodsDescriptionTitle>
-              <PaymentMethodsDescriptionType>24x R$ 64,54 sem juros</PaymentMethodsDescriptionType>
+              <PaymentMethodsDescriptionType>24x 
+                {Intl.NumberFormat( 'pt-BR'
+                                  ,{ style: 'currency'
+                                  , currency: 'BRL'})
+                                  .format(product.value / 24)} sem juros</PaymentMethodsDescriptionType>
             </PaymentMethodsDescription>
           </PaymentMethods>
 
@@ -92,7 +107,11 @@ export default function Product() {
             </PaymentMethodsIcon>
             <PaymentMethodsDescription>
               <PaymentMethodsDescriptionTitle>Cartão de Crédito</PaymentMethodsDescriptionTitle>
-              <PaymentMethodsDescriptionType>12x R$ 129,16 sem juros</PaymentMethodsDescriptionType>
+              <PaymentMethodsDescriptionType>12x
+              {Intl.NumberFormat( 'pt-BR'
+                                  ,{ style: 'currency'
+                                  , currency: 'BRL'})
+                                  .format(product.value / 12)} sem juros</PaymentMethodsDescriptionType>
             </PaymentMethodsDescription>
           </PaymentMethods>
 
@@ -335,8 +354,8 @@ export default function Product() {
         </Content>
       </ScrollView>
 
-      <View style={{ width: '100%', position: 'absolute', bottom: 0 }}>
-        <ButtonSale style={{ paddingTop: 5 }}>
+      <View style={{ width: '100%', position: 'absolute', bottom: 0, }}>
+        <ButtonSale style={{ paddingTop: 5, backgroundColor:'#FFF', paddingTop:15,  }}>
           <NumericInput
             rounded
             onChange={() => {}}
@@ -344,7 +363,11 @@ export default function Product() {
             totalWidth={164}
             totalHeight={55}
             iconSize={25}
-            minValue={0}
+            
+            minValue={1}
+            initValue={1}
+            
+
             borderColor="#fff"
             containerStyle={{
               shadowColor: '#000',
@@ -354,7 +377,6 @@ export default function Product() {
               },
               shadowOpacity: 0.22,
               shadowRadius: 2.22,
-
               elevation: 1,
             }}
           />
@@ -364,7 +386,7 @@ export default function Product() {
           </BuyButton>
         </ButtonSale>
 
-        <View style={{ width: '100%', alignItems: 'center', backgroundColor: '#fff' }}>
+        <View style={{ width: '100%', alignItems: 'center', backgroundColor: '#fff',paddingBottom:50, }}>
           <AskOpinionButton
             style={{
               borderWidth: 2,
