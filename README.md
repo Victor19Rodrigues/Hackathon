@@ -9,7 +9,7 @@
 	Desafio Americanas 4.0
 </h3>
 
-<table>
+<table align="center">
 <tr>
 <td>
   Como tornar a experiência de compras mais fluída integrando lojas físicas e virtuais?
