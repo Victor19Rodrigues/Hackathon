@@ -22,7 +22,7 @@
 </table>
 
 <p align="center">
-	<img alt="App" src="https://github.com/Victor19Rodrigues/Hackathon/blob/master/assets/app.png" height="100">
+	<img alt="App" src="https://github.com/Victor19Rodrigues/Hackathon/blob/master/assets/app.png" height="400">
 </p>
 
 ## Overview
