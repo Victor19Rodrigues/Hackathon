@@ -6,6 +6,8 @@ import { useNavigation } from '@react-navigation/native';
 import { ButtonSale, BuyButton } from './styles';
 
 import imgLogo from '../../assets/mask.png';
+import imgVovo from '../../assets/vovo.png';
+import imgBatedeira from '../../assets/batedeira.png';
 
 export default function AnswerChat() {
   const navigation = useNavigation();
@@ -97,25 +99,102 @@ export default function AnswerChat() {
             </Text>
           </View>
         </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+            justifyContent: 'flex-end',
+            margin: 16,
+            marginTop: 0,
+          }}>
+          <View style={{ width: 90, marginRight: 18 }}>
+            <Text
+              style={{
+                backgroundColor: '#FBD9DC',
+                paddingTop: 6,
+                paddingBottom: 16,
+                paddingLeft: 16,
+                paddingRight: 16,
+                borderRadius: 8,
+                color: '#4F4F4F',
+                textAlign: 'right',
+              }}>
+              Sim!
+            </Text>
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+            justifyContent: 'space-between',
+            margin: 16,
+            marginTop: 0,
+          }}>
+          <View style={{ flex: 1 }}>
+            <Image source={imgVovo} />
+          </View>
+
+          <View style={{ flex: 5, marginRight: 18 }}>
+            <Text
+              style={{
+                backgroundColor: '#F2F2F2',
+                paddingTop: 6,
+                paddingBottom: 16,
+                paddingLeft: 16,
+                paddingRight: 16,
+                borderRadius: 8,
+                color: '#4F4F4F',
+                lineHeight: 20,
+              }}>
+              Oi. Tudo bem? Faz muito tempo que você comprou essa batedeira?
+            </Text>
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+            justifyContent: 'flex-end',
+            margin: 16,
+            marginTop: 0,
+          }}>
+          <View style={{ width: 250, marginRight: 18 }}>
+            <Text
+              style={{
+                backgroundColor: '#FBD9DC',
+                paddingTop: 6,
+                paddingBottom: 16,
+                paddingLeft: 16,
+                paddingRight: 16,
+                borderRadius: 8,
+                color: '#4F4F4F',
+                lineHeight: 20,
+                textAlign: 'right',
+              }}>
+              Ei, Joana. Tudo ótimo. Ah, já tem uns 6 meses, e tá perfeita.
+            </Text>
+          </View>
+        </View>
+
+        <View
+          style={{
+            flexDirection: 'row',
+            flex: 1,
+            justifyContent: 'flex-end',
+            margin: 16,
+            marginTop: 0,
+          }}>
+          <View style={{ width: 250, marginRight: 18, alignItems: 'flex-end' }}>
+            <Image source={imgBatedeira} />
+          </View>
+        </View>
       </ScrollView>
 
       <View style={{ width: '100%', position: 'absolute', bottom: 0 }}>
-        <ButtonSale style={{ paddingTop: 5, flex: 1 }}>
-          <BuyButton style={{ alignItems: 'center', justifyContent: 'center' }} onPress={() => {}}>
-            <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16, lineHeight: 19 }}>
-              Infelizmente, não.
-            </Text>
-          </BuyButton>
-          <BuyButton
-            onPress={() => {
-              navigation.navigate('AnswerChat');
-            }}>
-            <Text style={{ color: '#fff', fontWeight: 'bold', fontSize: 16, lineHeight: 19 }}>
-              Sim!
-            </Text>
-          </BuyButton>
-        </ButtonSale>
-
         <View
           style={{
             flexDirection: 'row',
@@ -123,7 +202,8 @@ export default function AnswerChat() {
             marginBottom: 8,
             width: '100%',
             alignItems: 'center',
-            backgroundColor: '#fff',
+            paddingTop: 8,
+            backgroundColor: '#FAFAFA',
             justifyContent: 'center',
             marginRight: 16,
           }}>

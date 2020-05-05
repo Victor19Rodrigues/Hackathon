@@ -25,6 +25,7 @@ import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 import HeaderRight from './components/Icons/HeaderIcons/HeaderRight';
 import HeaderLeft from './components/Icons/HeaderIcons/HeaderLeft';
 import HeaderBack from './components/Icons/HeaderIcons/HeaderBack';
+import HeaderDots from './components/Icons/HeaderIcons/HeaderDots';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -113,7 +114,7 @@ function MainStackNavigator() {
         />
         <Stack.Screen
           name="QRCode"
-          component={Chat}
+          component={QRCode}
           options={{
             title: 'Escanear Produto',
             headerLeft: () => <HeaderBack />,
@@ -202,6 +203,7 @@ function MainStackNavigator() {
           options={{
             title: 'Joana',
             headerLeft: () => <HeaderBack />,
+            headerRight: () => <HeaderDots />,
           }}
         />
       </Stack.Navigator>

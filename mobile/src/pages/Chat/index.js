@@ -123,7 +123,8 @@ export default function Chat() {
             marginBottom: 8,
             width: '100%',
             alignItems: 'center',
-            backgroundColor: '#fff',
+            paddingTop: 8,
+            backgroundColor: '#FAFAFA',
             justifyContent: 'center',
             marginRight: 16,
           }}>
