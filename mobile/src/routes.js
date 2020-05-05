@@ -17,6 +17,8 @@ import GetProduct from './pages/GetProduct';
 import MyRequests from './pages/MyRequests';
 import Assessments from './pages/Assessments';
 import AssessmentSuccess from './pages/AssessmentSuccess';
+import Chat from './pages/Chat';
+import AnswerChat from './pages/AnswerChat'
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -111,7 +113,7 @@ function MainStackNavigator() {
         />
         <Stack.Screen
           name="QRCode"
-          component={QRCode}
+          component={Chat}
           options={{
             title: 'Escanear Produto',
             headerLeft: () => <HeaderBack />,
@@ -183,6 +185,22 @@ function MainStackNavigator() {
           component={AssessmentSuccess}
           options={{
             headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="Chat"
+          component={Chat}
+          options={{
+            title: 'Joana',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
+          name="AnswerChat"
+          component={AnswerChat}
+          options={{
+            title: 'Joana',
             headerLeft: () => <HeaderBack />,
           }}
         />
