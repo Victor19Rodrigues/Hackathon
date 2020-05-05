@@ -9,21 +9,15 @@
 	Desafio Americanas 4.0
 </h3>
 
-<table align="center">
-<tr>
-<td>
-  Como tornar a experiência de compras mais fluída integrando lojas físicas e virtuais?
-
-  Como estimular o uso do app para dar suporte as compras físicas?
-  
-  Como estimular o uso contínuo do aplicativo?
-</td>
-</tr>
-</table>
-
 <p align="center">
 	<img alt="App" src="https://github.com/Victor19Rodrigues/Hackathon/blob/master/assets/app.png" height="400">
 </p>
+
+## Desafio
+
+- **Como tornar a experiência de compras mais fluída integrando lojas físicas e virtuais?**
+- **Como estimular o uso do app para dar suporte as compras físicas?** 
+- **Como estimular o uso contínuo do aplicativo?**
 
 ## Overview
 
