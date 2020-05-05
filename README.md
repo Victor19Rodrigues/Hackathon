@@ -55,4 +55,4 @@ $ yarn start
 
 ---
 
-Made with :heart: by Victor Rodrigues and Everton Ferreira :smiley: 
+Made with :heart: by Everton Ferreira, Lucas, Samuel Murta, Taynan Penini e Victor Rodrigues. :smiley: 
