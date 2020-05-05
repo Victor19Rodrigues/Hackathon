@@ -13,7 +13,7 @@ export const ProductList = styled.FlatList`
 margin-top:20px;
 padding:16px;`;
 
-export const ProductItem = styled.View`
+export const ProductItem = styled.TouchableOpacity`
 background: #FAFAFA;
 flex: 1;
 margin:0px 5px 15px;

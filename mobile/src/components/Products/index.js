@@ -1,12 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {AntDesign} from '@expo/vector-icons';
-
+import { useNavigation } from '@react-navigation/native'
 import { Description, ProductList,ProductImage, ProductItem, Stars ,Value } from './styles';
 
 import {products} from '../../assets/Constants/index';
 
-export default function List() {
- 
+export default function List(props) {
+  const [searchProduct,setSearchProduct] = useState(props.search);
+  const navigation = useNavigation();
   return (
     <ProductList
     Vertical
@@ -14,8 +15,10 @@ export default function List() {
     numColumns={2}
     keyExtractor={product => String(product.id)}
     showsVerticalScrollIndicator={false}
-    renderItem={({item:product}) => (
-      <ProductItem>
+    renderItem={({item:product}) => product.description.search(props.search) !== -1 ?  (
+      <ProductItem
+        onPress={ () => navigation.navigate('Product', {product}) }
+      >
 
         <ProductImage source={product.img}></ProductImage>
         <Description>{ String(product.description).substr(0,25) +" .." }</Description>
@@ -31,8 +34,10 @@ export default function List() {
         </Value>
         
       </ProductItem>
-
-    )}
+    )
+    :
+    null
+  }
     />
 
   );

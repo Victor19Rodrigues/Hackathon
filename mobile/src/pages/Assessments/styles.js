@@ -73,7 +73,7 @@ export const MessageContainer = styled.FlatList.attrs(() => ({
 }))`
 padding:10px;`; 
 
-export const MessageItem = styled.View`
+export const MessageItem = styled.TouchableOpacity`
 flex-direction: row;
 align-items:center;
 justify-content: space-between;

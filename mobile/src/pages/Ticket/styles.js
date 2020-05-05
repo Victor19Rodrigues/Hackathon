@@ -8,7 +8,7 @@ export const ProductList = styled.FlatList.attrs(() => ({
 margin-top:20px;
 padding:16px;`;
 
-export const ProductItem = styled.View`
+export const ProductItem = styled.TouchableOpacity`
 background: #FAFAFA;
 flex-direction: row;
 text-align: center;

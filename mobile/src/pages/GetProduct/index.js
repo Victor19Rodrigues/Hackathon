@@ -54,7 +54,7 @@ export default function GetProduct() {
             fontWeight: 'bold',
             textAlign: 'center',
           }}>
-          Apple Watch Series 5 Gps, 44mm Space Grey Aluminium Case With Black Sport
+          ...
         </Text>
 
         <DivisorLine />

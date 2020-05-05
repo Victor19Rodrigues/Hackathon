@@ -12,7 +12,7 @@ export default function HeaderIcons() {
       <Header>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('Home');
+            navigation.navigate('AssessmentSuccess');
           }}>
           <Text
             style={{

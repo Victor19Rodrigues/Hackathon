@@ -39,8 +39,8 @@ export default function Assessments() {
   const [index, setIndex] = useState(0);
 
   const [routes] = useState([
-    { key: 'first', title: 'Opniões Efetuadas', backgroundColor: '#fff' },
-    { key: 'second', title: 'Opniões Recebidas' },
+    { key: 'first', title: 'Opiniões Efetuadas', backgroundColor: '#fff' },
+    { key: 'second', title: 'Opiniões Recebidas' },
   ]);
 
   const FirstRoute = () => (
@@ -50,7 +50,9 @@ export default function Assessments() {
       keyExtractor={item => String(item.id)} 
       showsVerticalScrollIndicator={false} 
       renderItem={ ({item}) => item.tipo === "op_efetuadas" ? (
-      <MessageItem>
+      <MessageItem
+      
+      onPress={() => navigation.navigate('Chat')}>
         <MessageImagem source={item.img} 
         style={{width:70, height:70 }}
         resizeMode="contain"/>
@@ -74,7 +76,8 @@ export default function Assessments() {
       keyExtractor={item => String(item.id)}  
       showsVerticalScrollIndicator={false}
       renderItem={ ({item}) => item.tipo === "op_recebidas" ? (
-      <MessageItem>
+      <MessageItem
+      onPress={() => navigation.navigate('Chat')}>
         <MessageImagem source={item.img} 
         style={{width:70, height:70 }}
         resizeMode="contain"/>
