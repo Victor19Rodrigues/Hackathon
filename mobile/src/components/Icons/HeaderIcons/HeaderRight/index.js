@@ -9,7 +9,7 @@ export default function HeaderIcons() {
     <Container>
       <Header>
         <HeaderIconsRight>
-          <Octicons name="search" size={24} color="#E60014" />
+          <Octicons name="search" size={24} onPress={() => navigation.navigate('Search')} color="#E60014" />
           <Feather name="shopping-bag" padding={30} size={24} color="#E60014" />
           <Feather name="user" onPress={() => (navigation.navigate('Perfil'))} size={24} color="#E60014" />
         </HeaderIconsRight>

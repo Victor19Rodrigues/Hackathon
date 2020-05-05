@@ -1,6 +1,6 @@
 import React from 'react';
 import {AntDesign} from '@expo/vector-icons';
-
+import { useNavigation } from '@react-navigation/native';
 import { Description,
          ProductList,ProductImage,
          ProductItem,
@@ -18,7 +18,7 @@ import { Description,
 import {products} from '../../assets/Constants/index';
 
 export default function List() {
- 
+  const navigation = useNavigation();
   return (
     <>
       <TitleContainer>
@@ -30,8 +30,9 @@ export default function List() {
       keyExtractor={product => String(product.id)}
       showsVerticalScrollIndicator={false}
       renderItem={({item:product}) => (
-        <ProductItem>
-
+        <ProductItem
+          onPress={() => navigation.navigate('Product',{product})}
+        >
           <ProductImage source={product.img}></ProductImage>
           <ProductContainer>
             <Description>{ String(product.description).substr(0,25) +" .." }</Description>

@@ -14,11 +14,14 @@ import Perfil from './pages/Perfil';
 import HomeOrStore from './pages/HomeOrStore';
 import GetInStore from './pages/GetInStore';
 import GetProduct from './pages/GetProduct';
+import MyRequestItem from './pages/MyRequestItem';
 import MyRequests from './pages/MyRequests';
 import Assessments from './pages/Assessments';
 import AssessmentSuccess from './pages/AssessmentSuccess';
+import AnswerSuccess from './pages/AnswerSuccess';
 import Chat from './pages/Chat';
 import AnswerChat from './pages/AnswerChat'
+import Search from './pages/Search';
 
 import HeartShareShoppingCart from './components/Icons/HeartShareShoppingCart';
 
@@ -87,7 +90,7 @@ function MainTabNavigator() {
       }}
     >
       <Tab.Screen name="Home" component={Home} />
-      <Tab.Screen name="Favourite" component={Favourite} />
+      <Tab.Screen name="Favourite" component={Home} />
       <Tab.Screen name="Wallet" component={Wallet} />
       <Tab.Screen 
         name="Ticket" 
@@ -142,6 +145,14 @@ function MainStackNavigator() {
           }}
         />
         <Stack.Screen
+          name="Search"
+          component={Search}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
           name="HomeOrStore"
           component={HomeOrStore}
           options={{
@@ -166,6 +177,14 @@ function MainStackNavigator() {
           }}
         />
         <Stack.Screen
+          name="MyRequestItem"
+          component={MyRequestItem}
+          options={{
+            title: 'Meu Pedido',
+            headerLeft: () => <HeaderBack />,
+          }}
+        />
+        <Stack.Screen
           name="MyRequests"
           component={MyRequests}
           options={{
@@ -186,9 +205,19 @@ function MainStackNavigator() {
           component={AssessmentSuccess}
           options={{
             headerTitle: '',
-            headerLeft: () => <HeaderBack />,
+            headerLeft: () => <HeaderBack direction='Home' />,
           }}
         />
+
+        <Stack.Screen
+          name="AnswerSuccess"
+          component={AnswerSuccess}
+          options={{
+            headerTitle: '',
+            headerLeft: () => <HeaderBack direction='Home' />,
+          }}
+        />  
+
         <Stack.Screen
           name="Chat"
           component={Chat}
@@ -205,7 +234,9 @@ function MainStackNavigator() {
             headerLeft: () => <HeaderBack />,
             headerRight: () => <HeaderDots />,
           }}
-        />
+      />
+    
+
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -1,276 +1,152 @@
-import React from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
-import { MaterialCommunityIcons, Feather, Ionicons } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { StyleSheet,Text, View, Dimensions } from 'react-native';
+import { Ionicons, AntDesign } from '@expo/vector-icons';
+import { perfilOption } from '../../assets/Constants'
+import perfilImage from '../../assets/img/perfil.png';
+import { useNavigation, useRoute } from '@react-navigation/native';
+import { TabView, TabBar, SceneMap } from 'react-native-tab-view';
+
+import { assessments } from '../../assets/Constants';
 
 import {
-  PaymentMethods,
-  PaymentMethodsDescription,
-  PaymentMethodsDescriptionType,
-  BuyButton,
-  PaymentMethodsInfo,
-} from './styles';
+     Container,
+     CardPerfil,
+     ImagePerfil,
+     OptionsContainer,
+     PaymentMethods,
+     PaymentMethodsTitle,
+     PaymentList,
+     PaymentItem,
+     PaymentHeader,
+     PaymentTitle,
+     PaymentDescription,
+     NamePerfil,
+     StartPerfil,
+     OpnionsPerfil,
+     MessageContainer,
+     MessageItem,
+     MessageImagem,
+     MessageProduct,
+     MessageName,
+     MessageDate,
+     Value,
+     MessageDescription,
+ } from './styles';
 
-import imgCard from '../../assets/img/product/apple-watch.png';
+export default function MyRequests() {
 
-export default function GetProduct() {
-  return (
-    <ScrollView style={{ flex: 1, backgroundColor: '#fff' }}>
-      <View
-        style={{
-          backgroundColor: '#fff',
-          flex: 1,
-          alignItems: 'center',
+  const navigation = useNavigation();
+  const initialLayout = 0;
+  const [index, setIndex] = useState(0);
+
+  const [routes] = useState([
+    { key: 'first', title: 'Retirar na Loja'  },
+    { key: 'second', title: 'Receber me Casa' },
+  ]);
+
+  const FirstRoute = () => (
+    <MessageContainer
+      data={assessments}
+      keyExtractor={item => String(item.id)} 
+      showsVerticalScrollIndicator={false} 
+      renderItem={ ({item}) => item.tipo === "op_efetuadas" ? (
+      <MessageItem onPress={() => { 
+        if(item.ativo == 0)
+          return null;
+        return navigation.navigate('MyRequestItem',{item});
         }}>
-        <PaymentMethods style={{ marginTop: 24 }}>
-          <PaymentMethodsDescription
-            style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <View
-              style={{
-                borderRadius: 2,
-                height: 115,
-                width: 164,
-              }}>
-              <Image source={imgCard} style={{ flex: 1, width: undefined, height: undefined }} />
-            </View>
+        <MessageImagem source={item.img} 
+        style={{width:100, height:100 }}
+        resizeMode="contain"/>
+        <MessageProduct>
+          <MessageDescription ativo={item.ativo}>{item.description}</MessageDescription>
+          <Value ativo={item.ativo}>{Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(item.value)}</Value>  
+          <MessageName avaliation={item.avaliation} ativo={item.ativo}>{item.option}</MessageName>
+        </MessageProduct>     
+      </MessageItem>
+      )
+      :
+      null
+    }
+    />
+  );
+  
+  const SecondRoute = () => (
+    <MessageContainer
+      data={assessments}
+      keyExtractor={item => String(item.id)}  
+      showsVerticalScrollIndicator={false}
+      renderItem={ ({item}) => item.tipo === "op_recebidas" ? (
+      <MessageItem onPress={() => { 
+        if(item.ativo == 0)
+          return null;
+        return navigation.navigate('MyRequestItem',{item});
+        }}>
+        <MessageImagem source={item.img} 
+        style={{width:70, height:70 }}
+        resizeMode="contain"/>
+        <MessageProduct>
+          <MessageDescription ativo={item.ativo}>{item.description}</MessageDescription>
+          <Value ativo={item.ativo}>{Intl.NumberFormat('pt-BR'
+                                        ,{ style: 'currency'
+                                        , currency: 'BRL'})
+                                        .format(item.value)}</Value>  
+          <MessageName avaliation={item.avaliation} ativo={item.ativo}>{item.option}</MessageName>
+        </MessageProduct>     
+      </MessageItem>
+      )
+      :
+      null
+    }
+    />
+  );
 
-            <View style={{ marginRight: 16 }}>
-              <PaymentMethodsDescriptionType
-                style={{ marginLeft: 16, color: '#333333', width: 150, fontSize: 16 }}>
-                Apple Watch Series 5 Gps, 44mm Space Grey Aluminium Case With Black Sport
-              </PaymentMethodsDescriptionType>
+  const renderScene = SceneMap({
+    first: FirstRoute,
+    second: SecondRoute,
+  });
 
-              <PaymentMethodsDescription
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginRight: 16,
-                  marginLeft: 16,
-                  marginTop: 16,
-                  alignItems: 'center',
-                  width: 150,
-                }}>
-                <Text style={{ color: '#4F4F4F', fontSize: 14 }}>Valor:</Text>
-                <Text style={{ color: '#333333', fontSize: 14 }}>R$ 1.549,99</Text>
-              </PaymentMethodsDescription>
+  const renderTabBar = props => (
+    <TabBar
+      {...props}
+      indicatorStyle={{ backgroundColor: '#000', }}
+      style={{ backgroundColor: '#FAFAFA' }}
 
-              <PaymentMethodsDescription
-                style={{
-                  flexDirection: 'row',
-                  justifyContent: 'space-between',
-                  marginRight: 16,
-                  marginLeft: 16,
-                  marginTop: 10,
-                  alignItems: 'center',
-                  width: 150,
-                }}>
-                <Text style={{ color: '#4F4F4F', fontSize: 14 }}>Pedido:</Text>
-                <Text style={{ color: '#333333', fontSize: 14 }}>02-8749487</Text>
-              </PaymentMethodsDescription>
-            </View>
-          </PaymentMethodsDescription>
-        </PaymentMethods>
-
-        <Text
-          style={{
-            marginTop: 15,
-            marginLeft: 16,
-            width: 300,
-            textAlign: 'left',
-            marginBottom: 32,
-            fontSize: 20,
-            lineHeight: 23,
-          }}>
-          Acompanhe seu pedido
+      renderLabel={({ route, focused, color }) => (
+        <Text style={{ color: '#000', margin: 8 }}>
+          {route.title}
         </Text>
+      )}
 
-        <PaymentMethods style={{ marginBottom: 0 }}>
-          <PaymentMethodsDescription style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 12,
-                borderWidth: 1,
-                backgroundColor: '#219653',
-                borderColor: '#219653',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            />
-            <Text style={{ marginLeft: 16, color: '#828282', fontSize: 14 }}>Pedido efetuado</Text>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Text style={{ color: '#828282', fontSize: 14 }}>12/03/2020</Text>
-          </PaymentMethodsInfo>
-        </PaymentMethods>
+    />
+  );
 
-        <View
-          style={{
-            borderStyle: 'solid',
-            borderColor: '#BDBDBD',
-            height: 17,
-            borderLeftWidth: 1,
-            alignSelf: 'flex-start',
-            marginLeft: 23,
-            marginTop: 4,
-            marginBottom: 4,
-          }}
-        />
-
-        <PaymentMethods style={{ marginBottom: 0 }}>
-          <PaymentMethodsDescription style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 12,
-                borderWidth: 1,
-                backgroundColor: '#219653',
-                borderColor: '#219653',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            />
-            <Text style={{ marginLeft: 16, color: '#828282', fontSize: 14 }}>
-              Pagamento efetuado
-            </Text>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Text style={{ color: '#828282', fontSize: 14 }}>12/03/2020</Text>
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-
-        <View
-          style={{
-            borderStyle: 'solid',
-            borderColor: '#BDBDBD',
-            height: 17,
-            borderLeftWidth: 1,
-            alignSelf: 'flex-start',
-            marginLeft: 23,
-            marginTop: 4,
-            marginBottom: 4,
-          }}
-        />
-
-        <PaymentMethods style={{ marginBottom: 0 }}>
-          <PaymentMethodsDescription style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 12,
-                borderWidth: 1,
-                backgroundColor: '#219653',
-                borderColor: '#219653',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            />
-            <Text style={{ marginLeft: 16, color: '#828282', fontSize: 14 }}>
-              Nota fiscal emitida
-            </Text>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Text style={{ color: '#828282', fontSize: 14 }}>12/03/2020</Text>
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-
-        <View
-          style={{
-            borderStyle: 'solid',
-            borderColor: '#BDBDBD',
-            height: 17,
-            borderLeftWidth: 1,
-            alignSelf: 'flex-start',
-            marginLeft: 23,
-            marginTop: 4,
-            marginBottom: 4,
-          }}
-        />
-
-        <PaymentMethods style={{ marginBottom: 0 }}>
-          <PaymentMethodsDescription style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 12,
-                borderWidth: 1,
-                backgroundColor: '#219653',
-                borderColor: '#219653',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            />
-            <Text style={{ marginLeft: 16, color: '#828282', fontSize: 14 }}>Em transporte</Text>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Text style={{ color: '#828282', fontSize: 14 }}>12/03/2020</Text>
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-
-        <View
-          style={{
-            borderStyle: 'solid',
-            borderColor: '#BDBDBD',
-            height: 17,
-            borderLeftWidth: 1,
-            alignSelf: 'flex-start',
-            marginLeft: 23,
-            marginTop: 4,
-            marginBottom: 4,
-          }}
-        />
-
-        <PaymentMethods style={{ marginBottom: 62 }}>
-          <PaymentMethodsDescription style={{ flexDirection: 'row' }}>
-            <View
-              style={{
-                height: 16,
-                width: 16,
-                borderRadius: 12,
-                borderWidth: 1,
-                backgroundColor: '#219653',
-                borderColor: '#219653',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}
-            />
-            <Text style={{ marginLeft: 16, color: '#219653', fontSize: 14 }}>
-              Disponível para retirar
-            </Text>
-          </PaymentMethodsDescription>
-          <PaymentMethodsInfo>
-            <Text style={{ color: '#333333', fontSize: 14 }}>12/03/2020</Text>
-          </PaymentMethodsInfo>
-        </PaymentMethods>
-
-        <View
-          style={{
-            marginRight: 50,
-            marginLeft: 50,
-            justifyContent: 'center',
-            alignSelf: 'center',
-            width: 327,
-            alignItems: 'center',
-            backgroundColor: '#fff',
-          }}>
-          <BuyButton
-            onPress={() => {
-              console.log('aqui');
-            }}
-            style={{
-              backgroundColor: '#E60014',
-              marginTop: 8,
-              alignSelf: 'center',
-              marginBottom: 5,
-            }}>
-            <Text style={{ color: '#fff', fontSize: 16, lineHeight: 19 }}>Retirar produto</Text>
-          </BuyButton>
-        </View>
-      </View>
-    </ScrollView>
+  return (
+    <>
+    <Container>
+        <CardPerfil>
+            <ImagePerfil source={perfilImage} />
+            <NamePerfil>Marta Almeida</NamePerfil>
+            <StartPerfil>
+              <AntDesign key={Math.random()} name="star" color={"#E60014"} size={15}/>
+              <AntDesign key={Math.random()} name="star" color={"#E60014"} size={15}/>
+              <AntDesign key={Math.random()} name="star" color={"#E60014"} size={15}/>
+              <AntDesign key={Math.random()} name="star" color={"#E60014"} size={15}/>
+              <AntDesign key={Math.random()} name="star" color={"#CCC"} size={15}/>
+            </StartPerfil>
+            <OpnionsPerfil>31 Opniões</OpnionsPerfil>
+        </CardPerfil>
+    </Container>
+    <TabView
+      navigationState={{ index, routes }}
+      renderScene={renderScene}
+      renderTabBar={renderTabBar}
+      onIndexChange={setIndex}
+      initialLayout={{ width: Dimensions.get('window').width }}
+    />
+  </>
   );
 }
